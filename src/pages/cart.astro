@@ -1,0 +1,12 @@
+---
+import Layout from "../layouts/Layout.astro";
+import CartPage from "../components/Cart/index.svelte";
+---
+
+<Layout title="Welcome to Astro.">
+  <main>
+    <div>
+      <CartPage client:only="svelte" />
+    </div>
+  </main>
+</Layout>
