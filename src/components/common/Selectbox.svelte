@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { clickOutside } from "../../click_outside";
+
   interface IOption {
     label: string;
     value: string | number;
@@ -30,7 +32,7 @@
   const handleOnbur = () => (isShowOption = false);
 </script>
 
-<div class={`select-box ${value ? "border-black" : ""}`}>
+<div class={`select-box ${value ? "border-black" : ""}`} use:clickOutside on:outclick={handleHidenOption}>
   <label
     for={id}
     class={`${value ? "-top-3 left-3 bg-white !text-current !px-1 text-sm !py-0" : "cursor-text"} ${

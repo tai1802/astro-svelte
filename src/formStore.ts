@@ -7,4 +7,11 @@ export interface IFormData {
   options: string;
 }
 
+/**
+ * @property {string} firstname
+ * @property {string} lastname
+ * @property {string} telephone
+ * @property {string} isChecked
+ * @property {string} options
+ */
 export const formData = atom<IFormData>({ firstname: "", isChecked: false, lastname: "", options: "", telephone: "" });
