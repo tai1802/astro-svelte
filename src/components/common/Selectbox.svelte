@@ -11,7 +11,13 @@
   let isShowOption = false;
   let displayValue = "";
 
-  const handleShowOption = () => (isShowOption = true);
+  const handleShowOption = (e: Event) => {
+    isShowOption = true;
+    const element = e.target as HTMLElement;
+    if (element.tagName.toLowerCase() === "input" || element.tagName.toLowerCase() === "div") {
+      (e.target as HTMLElement).focus();
+    }
+  };
 
   const handleHidenOption = () => (isShowOption = false);
 
@@ -20,17 +26,26 @@
     displayValue = (e.target as HTMLDivElement).innerText || "";
     handleHidenOption();
   };
+
+  const handleOnbur = () => (isShowOption = false);
 </script>
 
 <div class={`select-box ${value ? "border-black" : ""}`}>
   <label
     for={id}
-    class={`${value ? " -top-3 bg-white !text-current px-1 text-sm" : "cursor-text"} ${value ? "!text-current" : ""}`}
-    >{label}</label
+    class={`${value ? "-top-3 left-3 bg-white !text-current !px-1 text-sm !py-0" : "cursor-text"} ${
+      value ? "!text-current" : ""
+    }`}>{label}</label
   >
-  <input {id} bind:value={displayValue} readonly on:click={handleShowOption} />
+  <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+  <div class="px-3 py-2 input" role="presentation" tabindex="0" on:click={handleShowOption} on:blur={handleOnbur}>
+    <input {id} bind:value={displayValue} readonly />
+  </div>
   {#if isShowOption}
     <div class="options">
+      <div class="item" role="presentation" data-value="" on:mousemove={handleShowOption} on:click={handleChangeOption}>
+        {" "}
+      </div>
       {#each options as otp}
         <div
           class="item"
@@ -48,15 +63,15 @@
 
 <style scoped lang="scss">
   .select-box {
-    @apply border border-gray-400 px-3 py-2 relative rounded-md cursor-text;
+    @apply border border-gray-400 relative rounded-md cursor-pointer;
     &:hover {
       @apply border-black;
       > label {
-        @apply -top-3 bg-white text-current px-1 text-sm;
+        @apply -top-3 left-3 bg-white text-current px-1 text-sm py-0;
       }
     }
     label {
-      @apply absolute z-20 text-gray-400;
+      @apply absolute z-20 text-gray-400 px-3 py-2;
     }
     input {
       outline: none;
@@ -68,7 +83,7 @@
     .options {
       @apply absolute bg-white w-full left-0 top-[41px] border rounded;
       .item {
-        @apply cursor-pointer px-2 py-1;
+        @apply cursor-pointer px-2 py-1 min-h-[24px];
         &:hover {
           @apply bg-slate-100;
         }
