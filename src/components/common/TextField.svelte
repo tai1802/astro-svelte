@@ -21,11 +21,9 @@
 <div class={`text-field ${value || isFocus ? "border-black" : ""}`}>
   <label
     for={id}
-    class={`${
-      value || isFocus
-        ? " -top-3 bg-white !text-current px-1 text-sm"
-        : "cursor-text"
-    } ${value ? "!text-current" : ""}`}>{label}</label
+    class={`${value || isFocus ? " -top-3 bg-white !text-current px-1 text-sm" : "cursor-text"} ${
+      value ? "!text-current" : ""
+    }`}>{label}</label
   >
   <input
     {id}
@@ -55,5 +53,12 @@
       border: none;
       width: 100%;
     }
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
   }
 </style>

@@ -9,13 +9,7 @@
 </script>
 
 <div class={`svelte-checkbox`}>
-  <input
-    {id}
-    type="checkbox"
-    aria-label={ariaLabel}
-    bind:value={inputValue}
-    on:change={handleOnchange}
-  />
+  <input {id} type="checkbox" aria-label={ariaLabel} bind:value={inputValue} on:change={handleOnchange} />
   <label for={id} class={``}>{label}</label>
 </div>
 
