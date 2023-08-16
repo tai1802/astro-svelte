@@ -35,6 +35,8 @@
 </script>
 
 <div class="cart-page">
+  <a href="/">Home</a>
+  <a href="/test">TEST</a>
   <div class="w-1/2 mx-5 border border-gray-400 rounded-md h-full p-4">
     <div class="mb-4">
       <div>

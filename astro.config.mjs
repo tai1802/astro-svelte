@@ -8,5 +8,8 @@ export default defineConfig({
   integrations: [svelte(), tailwind()],
   server: {
     port: 3001
+  },
+  experimental: {
+    viewTransitions: true,
   }
 });
