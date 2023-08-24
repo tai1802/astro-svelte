@@ -4,6 +4,7 @@
   import TextField from "../common/TextField.svelte";
   import { formData } from "../../formStore";
   import { onMount } from "svelte";
+  import TestComp from "../common/TestComp.svelte";
 
   interface IFormData {
     firstname: string;
@@ -37,6 +38,7 @@
 <div class="cart-page">
   <a href="/">Home</a>
   <a href="/test">TEST</a>
+  <TestComp />
   <div class="w-1/2 mx-5 border border-gray-400 rounded-md h-full p-4">
     <div class="mb-4">
       <div>

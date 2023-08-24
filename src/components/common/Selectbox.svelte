@@ -48,7 +48,7 @@
       <div class="item" role="presentation" data-value="" on:mousemove={handleShowOption} on:click={handleChangeOption}>
         {" "}
       </div>
-      {#each options as otp}
+      {#each options as otp (otp.value)}
         <div
           class="item"
           role="presentation"
